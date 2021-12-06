@@ -105,7 +105,7 @@ public class Steque<Item> implements Iterable<Item> {
      * @return true if steque is empty, false otherwise.
      */
      ////Time complexity:O(1) Space Complexity:0
-     
+
     public boolean isEmpty() {
         return n==0;
     }
@@ -114,8 +114,10 @@ public class Steque<Item> implements Iterable<Item> {
      * return the number of elements currently in the steque.
      * @return size as integer.
      */
-    public int size() {
+    //Time complexity:O(1) Space Complexity:0
 
+    public int size() {
+        return n;
     }
     
     /**
@@ -124,6 +126,50 @@ public class Steque<Item> implements Iterable<Item> {
      * 
      */
     public Iterator<Item> iterator() {
+        return new ArrayIterator();
+    }
+    public class ArrayIterator implements Iterator<Item>
+    {
+        public int i = n-1;
+        @Override
+        public boolean hasNext(){
+            return i >= 0;
+    }
+    @Override
+    public void remove()
+    {
+        throw new UnsupportedOperationException();
+    }
+    @Override
+    public Item next()
+    {
+        if(!hasNext())
+            throw new NoSuchElementException();
+        Item item = a[i];
+        i--;
+        return item;
+    }
+}
+public static void main(String[] args)
+{
+    Steque<Integer> s = new Steque<Integer>();
+    s.enqueue(15);
+    s.enqueue(18);
+    s.enqueue(22);
+    s.push(35);
+    s.push(11);
+    s.push(16);
+    s.enqueue(26);
+    Iterator<Integer> i = s.iterator();
+    System.out.println("steque elements");
+    while(i.hasNext())
+        System.out.println(i.next());
+        System.out.println("popped elements");
+    while(!s.isEmpty())
+    {
+        System.out.println(s.pop());
+    }
+
 
     }
 }
