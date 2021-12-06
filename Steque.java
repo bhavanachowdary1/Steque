@@ -71,7 +71,7 @@ public class Steque<Item> implements Iterable<Item> {
      * @param item Item to be inserted.
      */
     //Time Complexity:O(1), Space Complexity:O(N)
-    
+
     public void push(Item item) {
         if(item==null)
             throw new IllegalArgumentException();
@@ -88,8 +88,15 @@ public class Steque<Item> implements Iterable<Item> {
      * pops a least recent item in steque.
      * @return Item object from steque.
      */
-    public Item pop() {
+     //Time Complexity:O(1), Space Complexity:O(N)
 
+    public Item pop() {
+        if(isEmpty())
+            throw new NoSuchElementException();
+        Item item=first.item;
+        first=first.next;
+        n--;
+        return item;
     }
     
     /**
