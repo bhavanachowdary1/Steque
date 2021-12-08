@@ -59,7 +59,7 @@ public class Steque<Item> implements Iterable<Item> {
             for(int i=a.length-1;i>0;i--)
                 a[i]=a[i-1];
             a[0]=item;
-                n++;
+            n++;
     }
     private void resize(int capacity){
         Item temp[]=(Item[]) new Object[capacity];
@@ -81,8 +81,8 @@ public class Steque<Item> implements Iterable<Item> {
             throw new IllegalArgumentException();
         if(n>=a.length)
             resize(2*a.length);
-            a[n]=item;
-            n++;
+        a[n]=item;
+        n++;
     }
     
     /**
